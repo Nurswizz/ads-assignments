@@ -4,7 +4,7 @@ import assignment2.interfaces.MyList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class MyArrayList<T> implements MyList<T> {
+public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
 
     private Object[] data;
     private int size;
@@ -105,8 +105,9 @@ public class MyArrayList<T> implements MyList<T> {
     public void sort() {
         for (int i = 0; i < size - 1; i++) {
             for (int j = 0; j < size - i - 1; j++) {
-                Comparable a = (Comparable) data[j];
-                Comparable b = (Comparable) data[j + 1];
+                T a = (T) data[j];
+                T b = (T) data[j + 1];
+
                 if (a.compareTo(b) > 0) {
                     Object temp = data[j];
                     data[j] = data[j + 1];
